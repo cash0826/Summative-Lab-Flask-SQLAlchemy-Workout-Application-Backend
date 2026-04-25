@@ -32,7 +32,7 @@ class Workout(db.Model):
   notes = db.Column(db.Text)
   
   # Relationship mapping Workout to Workout_Exercises
-  workout_exercise = db.relationship('WorkoutExercises', back_populates='workout')
+  workout_exercises = db.relationship('WorkoutExercises', back_populates='workout')
   
   # Model-level check 
   @validates('duration_minutes')
@@ -46,6 +46,7 @@ class Workout(db.Model):
     # checks that one workout is not longer than 3 hours  
     if duration > 210:
       raise ValueError("Workout cannot be longer than 3.5 hours/210 minutes ")
+    return duration
     
   def __repr__(self):
     return f'<Workout {self.id}, {self.date}, {self.duration_minutes}, {self.notes}'
@@ -62,7 +63,7 @@ class WorkoutExercises(db.Model):
   exercise_id = db.Column(db.Integer, db.ForeignKey('exercises.id'))
   reps = db.Column(db.Integer, nullable=False)
   sets = db.Column(db.Integer, nullable=False)
-  duration_secs = db.Column(db.Integer, nullable=False)
+  duration_seconds = db.Column(db.Integer, nullable=False)
   
   # Relationship mapping WorkoutExercises to related workout
   workout = db.relationship('Workout', back_populates='workout_exercises')
@@ -70,7 +71,7 @@ class WorkoutExercises(db.Model):
   exercise = db.relationship('Exercise', back_populates='workout_exercises')
   
   # Model-level check 
-  @validates('reps', 'sets', 'duration_secs')
+  @validates('reps', 'sets', 'duration_seconds')
   def validate_input(self, key, input):
     # Check for presence and not an empty input
     if not input:
@@ -78,6 +79,7 @@ class WorkoutExercises(db.Model):
     # Check for the correct type using isinstance
     if not isinstance(input, int):
       raise ValueError("Input must be a number")
+    return input
   
   def __repr__(self):
     return f'Workout Exercises {self.id}, {self.workout}, {self.exercise}, {self.reps}, {self.sets}, {self.duration_secs}'
