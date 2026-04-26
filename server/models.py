@@ -82,5 +82,5 @@ class WorkoutExercises(db.Model):
     return input
   
   def __repr__(self):
-    return f'Workout Exercises {self.id}, {self.workout}, {self.exercise}, {self.reps}, {self.sets}, {self.duration_secs}'
+    return f'Workout Exercises {self.id}, {self.workout}, {self.exercise}, {self.reps}, {self.sets}, {self.duration_seconds}'
   
