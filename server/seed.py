@@ -19,8 +19,8 @@ with app.app_context():
   db.session.commit()
   
   # Create Workouts
-  w1 = Workout(date=datetime.datetime(2026, 4, 17), duration_minutes=15, notes='Yoga flow')
-  w2 = Workout(date=datetime.datetime(2026, 10, 30), duration_minutes=20, notes='Strength training')
+  w1 = Workout(date=datetime.date(2026, 4, 17), duration_minutes=15, notes='Yoga flow')
+  w2 = Workout(date=datetime.date(2026, 4, 20), duration_minutes=20, notes='Strength training')
   db.session.add_all([w1, w2])
   db.session.commit()
   
