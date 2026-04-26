@@ -1,5 +1,5 @@
 # Summative-Lab-Flask-SQLAlchemy-Workout-Application-Backend
-[Project Description] This lab will follow a many-to-many relationship type, since exercises can be associated to many workouts and workouts can be associated to many exercises
+This lab will follow a many-to-many relationship type, since exercises can be associated to many workouts and workouts can be associated to many exercises
 
 ## Installation
 
@@ -16,6 +16,7 @@ cd server
 export FLASK_APP=app.py
 export FLASK_RUN_PORT=5555
 ```
+Use set instead of export if on mac OS
 
 To get create the database from the initial migration, run:
 
@@ -23,7 +24,7 @@ To get create the database from the initial migration, run:
 flask db upgrade
 python seed.py
 ```
-To open and view the backend, ensure you are in the server directory and run either commands:
+To open and view the backend, make sure that you are in the server directory and run either commands:
 ```console
 flask run
 python app.py
